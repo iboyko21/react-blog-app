@@ -1,19 +1,21 @@
 import './App.css';
 import Post from './Post';
+import Header from './Header';
+import {Route, Routes} from 'react-router-dom';
 
 function App() {
   return (
+    <Routes>
+      <Route index element={
     <main>
-      <header>
-        <a href="" className="logo">My Blog</a>
-        <nav>
-          <a href="">Login</a>
-          <a href="">Register</a>
-        </nav>
-      </header>
-
-      <Post />  
+      <Header />
+      <Post />
+      <Post /> 
+      <Post /> 
     </main>
+  } />
+    </Routes>
+    
   );
 }
 
