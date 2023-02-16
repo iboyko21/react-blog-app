@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
+import { UserContext } from './../UserContext';
 
 export default function LoginPage() {
     const [username,setUsername] = useState(''); // useState('') means default is '' empty
     const [password,setPassword] = useState('');
     const [redirect,setRedirect] = useState('false'); // useState('false') false is default
+    const {setUserInfo} = useContext(UserContext);
 
     async function login(ev) {
         ev.preventDefault();
@@ -15,6 +17,10 @@ export default function LoginPage() {
             credentials: 'include' // this is used to store credentials for webtoken
         });
         if (response.ok) {
+            response.json().then(userInfo => {
+                setUserInfo(userInfo);
+                setRedirect(true);
+            })
             setRedirect(true);
         } else {
             alert('invalid login');

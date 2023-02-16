@@ -3,7 +3,8 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const bcrypt = require('bcryptjs'); // used to encrypt passwords
-const jwt = require('jsonwebtoken'); 
+const jwt = require('jsonwebtoken');
+const cookieParser = require('cookie-parser');
 const app = express();
 
 const salt = bcrypt.genSaltSync(10); // for encrypting passwords
@@ -11,12 +12,14 @@ const secret ='khagf087gad986gaga6968gasd'; // used for username cookie
 
 app.use(cors({credentials:true,origin:'http://localhost:3000'}));
 app.use(express.json()); // use json parser
+app.use(cookieParser());
 
 mongoose.connect('mongodb+srv://blog:LUiPdJIY5UAGkwSn@cluster0.ihtfozl.mongodb.net/?retryWrites=true&w=majority');
 
 app.get('/test', (req, res) => { // test route
     res.json('test ok'); 
 });
+
 app.post('/register', async (req, res) => {
     const {username,password} = req.body;
     try {
@@ -37,11 +40,26 @@ app.post('/login', async (req,res) => {
         // logged in
         jwt.sign({username,id:userDoc._id}, secret, {}, (err,token) => {
             if (err) throw err;
-            res.cookie('token', token).json('ok');
+            res.cookie('token', token).json({
+                id: userDoc._id,
+                username,
+            });
         });
     } else {
         res.status(400).json('wrong credentials');
     }
 });
 
-app.listen(4000);
+app.get('/profile', (req,res) => {
+    const {token} = req.cookies;
+    jwt.verify(token, secret, {}, (err,info) => {
+        if (err) throw err;
+        res.json(info);
+    });
+});
+
+app.post('/logout', (req,res) => {
+    res.cookie('token', '').json('ok');
+});
+
+app.listen(4000, ()=>{console.log('listening on port 4000')});
