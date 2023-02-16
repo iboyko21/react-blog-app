@@ -16,9 +16,9 @@ app.use(cookieParser());
 
 mongoose.connect('mongodb+srv://blog:LUiPdJIY5UAGkwSn@cluster0.ihtfozl.mongodb.net/?retryWrites=true&w=majority');
 
-app.get('/test', (req, res) => { // test route
-    res.json('test ok'); 
-});
+// app.get('/test', (req, res) => { // test route
+//     res.json('test ok'); 
+// });
 
 app.post('/register', async (req, res) => {
     const {username,password} = req.body;
@@ -46,7 +46,7 @@ app.post('/login', async (req,res) => {
             });
         });
     } else {
-        res.status(400).json('wrong credentials');
+        res.status(400).json('invalid login');
     }
 });
 
