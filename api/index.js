@@ -11,7 +11,7 @@ const salt = bcrypt.genSaltSync(10); // for encrypting passwords
 const secret ='khagf087gad986gaga6968gasd'; // used for username cookie
 
 app.use(cors({credentials:true,origin:'http://localhost:3000'}));
-app.use(express.json()); // use json parser
+app.use(express.json());
 app.use(cookieParser());
 
 mongoose.connect('mongodb+srv://blog:LUiPdJIY5UAGkwSn@cluster0.ihtfozl.mongodb.net/?retryWrites=true&w=majority');

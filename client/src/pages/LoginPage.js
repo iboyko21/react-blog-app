@@ -14,7 +14,7 @@ export default function LoginPage() {
             method: 'POST',
             body: JSON.stringify({username,password}),
             headers: {'Content-Type':'application/json'},
-            credentials: 'include' // this is used to store credentials for webtoken
+            credentials: 'include', // this is used to store credentials for webtoken
         });
         if (response.ok) {
             response.json().then(userInfo => {

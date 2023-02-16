@@ -17,6 +17,7 @@ export default function Header() {
     }, []);
 
     function logout() {
+        console.log('logout triggered');
         fetch('http://localhost:4000/logout', {
             method: 'POST',
             credentials: 'include'
@@ -40,6 +41,7 @@ export default function Header() {
                     <>
                         <Link to="/login">Login</Link>
                         <Link to="/register">Register</Link>
+                        <a onClick={logout}>Logout</a>
                     </>
                 )}
             </nav>
