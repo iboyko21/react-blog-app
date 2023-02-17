@@ -2,10 +2,14 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const User = require('./models/User');
+const Post = require('./models/Post');
 const bcrypt = require('bcryptjs'); // used to encrypt passwords
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const app = express();
+const multer = require('multer'); // used to grab files from api requests
+const uploadMiddleware = multer({ dest: 'uploads/' });
+const fs = require('fs'); // file system
 
 const salt = bcrypt.genSaltSync(10); // for encrypting passwords
 const secret ='khagf087gad986gaga6968gasd'; // used for username cookie
@@ -13,6 +17,7 @@ const secret ='khagf087gad986gaga6968gasd'; // used for username cookie
 app.use(cors({credentials:true,origin:'http://localhost:3000'}));
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static(__dirname + '/uploads')); // points to the correct uploads directory for the images
 
 mongoose.connect('mongodb+srv://blog:LUiPdJIY5UAGkwSn@cluster0.ihtfozl.mongodb.net/?retryWrites=true&w=majority');
 
@@ -42,11 +47,11 @@ app.post('/login', async (req,res) => {
         if (err) throw err;
         res.cookie('token', token).json({
           id:userDoc._id,
-          username,
+          username
         });
       });
     } else {
-      res.status(400).json('wrong credentials');
+      res.status(400).json('invalid credentials');
     }
   });
 
@@ -60,6 +65,35 @@ app.get('/profile', (req,res) => {
 
 app.post('/logout', (req,res) => {
     res.cookie('token', '').json('ok');
+});
+
+app.post('/post', uploadMiddleware.single('file'), async (req,res) => {
+    const {originalname,path} = req.file;
+    const parts = originalname.split('.');
+    const ext = parts[parts.length - 1];
+    const newPath = path + '.' + ext; // new path for file with its extension
+    fs.renameSync(path, newPath); // rename the saved file to include it's extension
+
+    const {token} = req.cookies;
+    jwt.verify(token, secret, {}, async (err,info) => {
+        if (err) throw err;
+        const {title,summary,content} = req.body;
+        const postDoc = await Post.create({
+            title,
+            summary,
+            content,
+            file: newPath,
+            author: info.id
+        });
+        res.json(postDoc);
+    });
+});
+app.get('/post', async (req,res) => {
+    res.json(await Post.find()
+                        .populate('author', ['username']) // find all posts in the database
+                        .sort({createdAt: -1}) // -1 means descending order
+                        .limit(20) // only show 20 posts
+    );
 });
 
 app.listen(4000, ()=>{console.log('listening on port 4000')});
