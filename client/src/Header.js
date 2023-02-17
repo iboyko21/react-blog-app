@@ -16,8 +16,8 @@ export default function Header() {
 
   function logout() {
     fetch('http://localhost:4000/logout', {
-      credentials: 'include',
-      method: 'POST',
+        method: 'POST',
+        credentials: 'include'
     });
     setUserInfo(null);
   }
@@ -38,7 +38,6 @@ export default function Header() {
           <>
             <Link to="/login">Login</Link>
             <Link to="/register">Register</Link>
-            <a onClick={logout}>Logout ({username})</a>
           </>
         )}
       </nav>

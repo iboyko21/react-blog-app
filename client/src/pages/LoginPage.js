@@ -1,11 +1,11 @@
 import { useState, useContext } from 'react';
 import { Navigate } from 'react-router-dom';
-import { UserContext } from './../UserContext';
+import { UserContext } from '../UserContext';
 
 export default function LoginPage() {
     const [username,setUsername] = useState(''); // useState('') means default is '' empty
     const [password,setPassword] = useState('');
-    const [redirect,setRedirect] = useState('false'); // useState('false') false is default
+    const [redirect,setRedirect] = useState(false); // useState('false') false is default
     const {setUserInfo} = useContext(UserContext);
 
     async function login(ev) {
@@ -20,8 +20,7 @@ export default function LoginPage() {
             response.json().then(userInfo => {
                 setUserInfo(userInfo);
                 setRedirect(true);
-            })
-            setRedirect(true);
+            });
         } else {
             alert('invalid login');
         }
@@ -36,11 +35,11 @@ export default function LoginPage() {
             <input type="text" 
                     placeholder="username" 
                     value={username} 
-                    onChange={ev => setUsername(ev.target.value)} />
+                    onChange={ev => setUsername(ev.target.value)}/>
             <input type="password" 
                     placeholder="password" 
                     value={password} 
-                    onChange={ev => setPassword(ev.target.value)} />
+                    onChange={ev => setPassword(ev.target.value)}/>
             <button>Login</button>
         </form>
     );
