@@ -95,7 +95,11 @@ button {
   color: #fff;
 }
 
-form h1 {
+.createpost {
+  margin-top: 5px;
+}
+
+form.login h1, form.register h1 {
   text-align: center;
 }
 
