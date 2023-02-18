@@ -1,1 +1,1 @@
-# React Blog Application
+# MERN Blog Application
