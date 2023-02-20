@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import {formatISO9075} from 'date-fns'; // date-fns used to format date
-// import {format} from 'date-fns'; // can use format function to customize the date/time format
+// import {format} from 'date-fns'; // can use format function to manually customize the date/time format
 
 export default function Post({_id,title,summary,file,createdAt,author}) {
     return (

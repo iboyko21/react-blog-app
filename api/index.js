@@ -1,12 +1,12 @@
 const express = require('express');
 const cors = require('cors');
+const app = express();
 const mongoose = require('mongoose');
 const User = require('./models/User');
 const Post = require('./models/Post');
 const bcrypt = require('bcryptjs'); // used to encrypt passwords
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
-const app = express();
 const multer = require('multer'); // used to grab files from api requests
 const uploadMiddleware = multer({ dest: 'uploads/' });
 const fs = require('fs'); // file system
@@ -90,7 +90,6 @@ app.post('/post', uploadMiddleware.single('file'), async (req,res) => {
 });
 app.put('/post', uploadMiddleware.single('file'), async (req,res) => {
     const newPath = null;
-    // res.json({fileIs:req.file});
     if (req.file) { // if there's a new file then rename it
         const {originalname,path} = req.file;
         const parts = originalname.split('.');
@@ -132,4 +131,6 @@ app.get('/post/:id', async (req, res) => {
     res.json(postDoc);
 });
 
-app.listen(4000, ()=>{console.log('listening on port 4000')});
+app.listen(4000, () => {
+    console.log('listening on port 4000')
+});

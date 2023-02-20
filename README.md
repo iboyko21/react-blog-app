@@ -13,7 +13,7 @@ This is a fullstack blog application built using the MERN stack, which includes 
 The application includes user authentication using JSON Web Tokens (JWT). Users can sign up and log in to the application. When a user logs in, a JWT is generated and stored in local storage, which is used to authenticate the user for subsequent requests.
 
 ## Creating Posts
-Logged-in users can create new posts by clicking on the "New Post" button on the navigation bar. They will be redirected to a form where they can enter the title, summary and content of the post. Upon submission, the post will be saved to the database and displayed on the home page.
+Logged-in users can create new posts by clicking on the "Create new nost" button on the navigation bar. They will be redirected to a form where they can enter the title, summary and content of the post. Upon submission, the post will be saved to the database and displayed on the home page.
 
 ## Editing Posts
 Logged-in users can edit their own posts by clicking on the "Edit" button next to their post on the home page. They will be redirected to a form where they can update the title and content of the post. Upon submission, the post will be updated in the database and the changes will be reflected on the home page.

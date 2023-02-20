@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 export default function IndexPage() {
     const [posts,setPosts] = useState([]);
 
-    useEffect(() => { // useEffct hook is like componentDidMount, componentDidUpdate, and componentWillUnmount combined
+    useEffect(() => { // useEffect hook is like componentDidMount, componentDidUpdate, and componentWillUnmount combined
         fetch('http://localhost:4000/post').then(response => {
             response.json().then(posts => {
                 setPosts(posts);
