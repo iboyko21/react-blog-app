@@ -1,1 +1,6 @@
-# Fullstack Blog App using MERN (MongoDB, Express.js, React.js, Node.js)
+# Fullstack Blog App 
+## Using MERN stack 
+* MongoDB
+* Express.js
+* React.js 
+* Node.js
