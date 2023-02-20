@@ -1,1 +1,1 @@
-# MERN Blog Application
+# Fullstack Blog App using MERN (MongoDB, Express.js, React.js, Node.js)
