@@ -1,16 +1,15 @@
 # Fullstack Blog Application using MERN Stack
 
-## This is a fullstack blog application built using the MERN stack, which includes MongoDB, Express.js, React, and Node.js. The main features of this application include user authentication, allowing logged-in users to create and edit their own posts.
+This is a fullstack blog application built using the MERN stack, which includes MongoDB, Express.js, React, and Node.js. The main features of this application include user authentication, allowing logged-in users to create and edit their own posts.
 
 ## Installation
-Clone the repository
-Navigate to the 'api' directory of the project
-Run npm install to install server-side dependencies
-Navigate to the 'client' directory using cd client
-Run npm install to install client-side dependencies
+* Clone the repository
+* Navigate to the 'api' directory of the project
+* Run npm install to install server-side dependencies
+* Navigate to the 'client' directory using cd client
+* Run npm install to install client-side dependencies
 
 ## Usage
-User Authentication
 The application includes user authentication using JSON Web Tokens (JWT). Users can sign up and log in to the application. When a user logs in, a JWT is generated and stored in local storage, which is used to authenticate the user for subsequent requests.
 
 ## Creating Posts
