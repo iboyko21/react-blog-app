@@ -131,6 +131,20 @@ app.get('/post/:id', async (req, res) => {
     res.json(postDoc);
 });
 
+app.delete('/post/:id', async (req, res) => {
+    const {id} = req.params;
+    try {
+      const postDoc = await Post.findByIdAndDelete(id);
+      if (!postDoc) {
+        return res.status(404).send({ message: 'Post not found' });
+      }
+      res.send({ message: 'Post deleted successfully' });
+    } catch (error) {
+      console.log(error);
+      res.status(500).send({ message: 'Server error' });
+    }
+  });
+
 app.listen(4000, () => {
-    console.log('listening on port 4000')
+    console.log('listening on port 4000');
 });
