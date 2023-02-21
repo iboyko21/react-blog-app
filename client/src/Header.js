@@ -26,19 +26,19 @@ export default function Header() {
 
   return (
     <header>
-      <Link to="/" className="logo">MyBlog</Link>
+      <Link to="/" className="logo">#MyBlog</Link>
       <nav>
         {username && (
           <>
-            <span>Hello, {username}</span>
-            <Link to="/create">New Post</Link>
-            <a className="logout" onClick={logout}>Logout ({username})</a>
+            <span className="hello">Hello, {username}</span>
+            <Link to="/create" className="header-button">New Post</Link>
+            <a className="header-button" onClick={logout}>Logout</a>
           </>
         )}
         {!username && (
           <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
+            <Link to="/login" className="header-button">Login</Link>
+            <Link to="/register" className="header-button">Register</Link>
           </>
         )}
       </nav>

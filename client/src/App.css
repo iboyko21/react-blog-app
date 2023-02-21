@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box; /* fixed form elements to align properly, for width 100% to include padding*/
 }
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,42 +11,79 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: #222;
 }
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
+
 img {
   max-width: 100%;
 }
 
-main {
-  padding: 10x;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
+/* ----------HEADER--------------- */
 header {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  padding: 25px 20px;
   margin-bottom: 50px;
   align-items: center;
+  background-color: #777;
 }
 header a {
-  /* text-decoration: none; */
+  text-decoration: none;
   color: inherit;
 }
-header a.logo {
-  font-weight: bold;
-  font-size: 1.5rem;
+.logo {
+    font-size: 40px;
+    font-family: 'Impact';
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-shadow:   
+                   -6px  -3px 0 #212121,
+                   -7px  -3px 0 #212121,
+                   -8px  -3px 0 #212121,
+                  /* -6px  0px 0 #212121,
+                   6px  0px 0 #212121,
+                  -6px -6px 0 #212121,
+                   6px -6px 0 #212121,
+                  -6px  6px 0 #212121,
+                   6px  6px 0 #212121,
+                  -6px  18px 0 #212121,
+                   0px  18px 0 #212121,
+                   6px  18px 0 #212121, */
+                   0 19px 1px rgba(0,0,0,.1),
+                   0 0 6px rgba(0,0,0,.1),
+                   0 6px 3px rgba(0,0,0,.3),
+                   0 12px 6px rgba(0,0,0,.2),
+                   0 18px 18px rgba(0,0,0,.25),
+                   0 24px 24px rgba(0,0,0,.2),
+                   0 36px 36px rgba(0,0,0,.15);
 }
+
 header nav {
   display: flex;
   gap: 15px;
 }
-.logout {
-  text-decoration: underline;
+.hello {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 25px;
+  font-family: 'Freestyle Script';
+  font-size: 35px;
+  color: #fff;
+}
+.header-button {
+  background-color: #333;
+  display: inline-flex;
+  align-items: center;
+  color: #fff;
+  padding: 10px 10px;
+  border: 1px solid #fff;
+  border-radius: 5px;
   cursor: pointer;
+}
+/* --------- MAIN-------------- */
+main {
+  padding: 10x;
+  max-width: 960px;
+  margin: 0 auto;
 }
 
 div.post {
@@ -82,7 +120,8 @@ div.post p.summary {
   margin: 10px 0;
   line-height: 1.4rem;
 }
-/* FORM */
+
+/* --------FORM--------------- */
 form.login, form.register {
   max-width: 400px;
   margin: 0 auto;
@@ -110,13 +149,14 @@ button {
 }
 
 .createpost {
-  margin-top: 5px;
+  margin: 5px 0;
 }
 
 form.login h1, form.register h1 {
   text-align: center;
 }
-/* POST PAGE */
+
+/* ---------POST PAGE------------ */
 div.post-page div.image {
   max-height: 200px;
   display: flex;
@@ -131,18 +171,12 @@ div.post-page a {
   color: #333;
   text-decoration: underline;
 }
-/* div.post-page h1 {
-  text-align: center;
-  margin: 10px 0 5px;
-} */
 div.post-page time {
-  /* text-align: center; */
   display: block;
   font-size: .7rem;
   color: #aaa;
 }
 div.post-page div.author {
-  /* text-align: center; */
   margin-bottom: 20px;
   font-size: .7rem;
   font-weight: bold;
