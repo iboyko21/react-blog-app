@@ -48,7 +48,6 @@ header a {
                    0 24px 24px rgba(0,0,0,.2),
                    0 36px 36px rgba(0,0,0,.15);
 }
-
 header nav {
   display: flex;
   gap: 15px;

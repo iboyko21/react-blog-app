@@ -16,7 +16,10 @@ The application includes user authentication using JSON Web Tokens (JWT). Users 
 Logged-in users can create new posts by clicking on the "New Post" button on the navigation bar. They will be redirected to a form where they can enter the title, summary and content of the post. Upon submission, the post will be saved to the database and displayed on the home page.
 
 ## Editing Posts
-Logged-in users can edit their own posts by clicking on the "Edit" button next to their post on the home page. They will be redirected to a form where they can update the title and content of the post. Upon submission, the post will be updated in the database and the changes will be reflected on the home page.
+Logged-in users can edit their own posts by clicking on the "Edit" button next to their post on the post page. They will be redirected to a form where they can update the title and content of the post. Upon submission, the post will be updated in the database and the changes will be reflected on the home page.
+
+## Deleting Posts
+Logged-in users can also delete their own posts by clicking on the "Delete" button next to their post on the post page. Upon confirmation, the post will be deleted from the database and the changes will be reflected on the home page.
 
 ## Technologies Used
 * MongoDB: a NoSQL document-oriented database
