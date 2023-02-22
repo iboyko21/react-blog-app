@@ -6,7 +6,7 @@ export default function DeletePost() {
     const [title, setTitle] = useState('');
     // const [summary, setSummary] = useState('');
     const [content,setContent] = useState('');
-    // const [files,setFiles] = useState('');
+    const [file,setFile] = useState('');
     const [redirect,setRedirect] = useState(false);
     const [cancel,setCancel] = useState(false);
 
@@ -16,7 +16,7 @@ export default function DeletePost() {
             response.json().then(postInfo => {
                 setTitle(postInfo.title);
                 setContent(postInfo.content);
-                // setSummary(postInfo.summary);
+                setFile(postInfo.file);
             });
         });
     }, []);
@@ -50,6 +50,9 @@ export default function DeletePost() {
                 <button className="btn-no" onClick={cancelDelete}>No</button>
             </div>
             <h1>{title}</h1>
+            <div className="image">
+                <img src={`http://localhost:4000/${file}`} alt=""/>
+            </div>
             <p dangerouslySetInnerHTML={{__html: content}} />
         </div>
     );
