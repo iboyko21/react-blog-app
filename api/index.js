@@ -21,10 +21,6 @@ app.use('/uploads', express.static(__dirname + '/uploads')); // points to the co
 
 mongoose.connect('mongodb+srv://blog:LUiPdJIY5UAGkwSn@cluster0.ihtfozl.mongodb.net/?retryWrites=true&w=majority');
 
-// app.get('/test', (req, res) => { // test route
-//     res.json('test ok'); 
-// });
-
 app.post('/register', async (req, res) => {
     const {username,password} = req.body;
     try {

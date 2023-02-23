@@ -4,7 +4,7 @@ import { Navigate, useParams } from "react-router-dom";
 export default function DeletePost() {
     const {id} = useParams();
     const [title, setTitle] = useState('');
-    // const [summary, setSummary] = useState('');
+    const [summary, setSummary] = useState('');
     const [content,setContent] = useState('');
     const [file,setFile] = useState('');
     const [redirect,setRedirect] = useState(false);
@@ -17,6 +17,7 @@ export default function DeletePost() {
                 setTitle(postInfo.title);
                 setContent(postInfo.content);
                 setFile(postInfo.file);
+                setSummary(postInfo.summary);
             });
         });
     }, []);
@@ -46,13 +47,14 @@ export default function DeletePost() {
         <div className="delete">
             <div className="confirm">
                 Are you sure you want to delete this post?<br/>
-                <button className="btn-yes" onClick={deletePost}>Yes</button>
-                <button className="btn-no" onClick={cancelDelete}>No</button>
+                <button onClick={deletePost}>Yes</button>
+                <button onClick={cancelDelete}>No</button>
             </div>
             <h1>{title}</h1>
             <div className="image">
                 <img src={`http://localhost:4000/${file}`} alt=""/>
             </div>
+            <p className="post-page-summary">{summary}</p>
             <p dangerouslySetInnerHTML={{__html: content}} />
         </div>
     );

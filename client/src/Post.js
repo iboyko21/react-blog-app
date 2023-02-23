@@ -15,7 +15,7 @@ export default function Post({_id,title,summary,file,createdAt,author}) {
             <h2>{title}</h2>
           </Link>
           <p className="info">
-            <a className="author">{author.username}</a>
+            posted by:<a className="author">{author.username}</a> |
             <time>{formatISO9075(new Date(createdAt))}</time>
             {/* <time>{format(new Date(createdAt), 'MMM d, yyyy HH:mm')}</time> */} 
           </p>
@@ -24,7 +24,3 @@ export default function Post({_id,title,summary,file,createdAt,author}) {
       </div>
     );
 }
-
-
-
-

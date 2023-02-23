@@ -31,6 +31,8 @@ header a {
   color: inherit;
 }
 .logo {
+    display: flex;
+    align-items: center;
     font-size: 40px;
     font-family: 'Impact';
     color: #fff;
@@ -47,6 +49,10 @@ header a {
                    0 18px 18px rgba(0,0,0,.25),
                    0 24px 24px rgba(0,0,0,.2),
                    0 36px 36px rgba(0,0,0,.15);
+}
+.logo svg {
+  color: #212121;
+  height: 50px;
 }
 header nav {
   display: flex;
@@ -102,7 +108,7 @@ div.post p.info {
   font-size: .7rem;
   font-weight: bold;
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 10px;
 }
 div.post p.info a.author {
@@ -175,34 +181,44 @@ div.post-page time {
   font-size: .8rem;
   font-weight: bold;
 }
+.post-page-summary {
+  margin-top: 2rem;
+  font-style: italic;
+  font-size: large;
+}
 div.post-page div.content p {
   line-height: 1.6rem;
 }
+.post-page-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 div.edit-row {
   display: flex;
-  margin-bottom: 20px;
+  gap: 1rem;
 }
 div.post-page a.edit-btn {
-  background-color: #1ea529;
+  background-color: rgb(0,120,0);
   display: inline-flex;
   color: #fff;
   padding: 5px 10px;
   text-decoration: none;
+  border: 1px solid black;
   border-radius: 5px;
 }
 div.post-page a.delete-btn {
-  background-color: #ce0101;
+  background-color: rgb(120, 0, 0);
   display: inline-flex;
   color: #fff;
   padding: 5px 10px;
-  margin-left: 20px;
   text-decoration: none;
+  border: 1px solid black;
   border-radius: 5px;
 }
 a svg {
   height: 20px;
 }
-
 .confirm {
   display: flex;
   gap: 20px;
@@ -214,4 +230,5 @@ a svg {
 .confirm button {
   width: fit-content;
   padding: 10px 30px;
+  border: 1px solid black;
 }
